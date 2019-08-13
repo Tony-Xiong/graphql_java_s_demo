@@ -1,0 +1,63 @@
+
+type Query {
+  bookById(id: ID): Book
+  books(minCount: Int=0): [Book]
+}
+
+type Book {
+  id: ID
+  name: String
+  pageCount: Int
+  author: Author
+}
+
+type Author {
+  id: ID
+  firstName: String
+  lastName: String
+}
+
+type Msg {
+  time: Timestamp
+  from: String
+  context: String
+}
+
+type Mutation {
+  createBook(name: String!, pageCount: Int!, firstName: String!, lastName: String!): Book
+}
+
+type Subscription {
+  subMsg(channel:String!): Msg
+}
+
+scalar Timestamp
+
+#interface human {
+#  sex: String
+#  name: String
+#  age: Int
+#}
+#
+#type citizen implements human{
+#  id: ID
+#  sex: String
+#  name: String
+#  age: Int
+#  city: String
+#  country: String
+#}
+#
+#type contryMan {
+#  humenInfo: human
+#  birthday: Date
+#  color : Color
+#}
+#
+#enum Color {
+#  RED
+#  BLUE
+#  WHITE
+#  BLACK
+#  GREEN
+#}

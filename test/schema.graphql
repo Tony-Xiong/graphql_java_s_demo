@@ -1,0 +1,43 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type Author {
+  firstName: String
+  id: ID
+  lastName: String
+}
+
+type Book {
+  author: Author
+  id: ID
+  name: String
+  pageCount: Int
+}
+
+type Msg {
+  context: String
+  from: String
+  time: Timestamp
+}
+
+type Mutation {
+  createBook(firstName: String!, lastName: String!, name: String!, pageCount: Int!): Book
+}
+
+type Query {
+  bookById(id: ID): Book
+  books(minCount: Int = 0): [Book]
+}
+
+type Subscription {
+    subMsg(channel: String!): Msg
+}
+
+
+"A custom scalar that handles Timestamp"
+scalar Timestamp
